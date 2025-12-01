@@ -1,7 +1,10 @@
-﻿class Day1
+﻿using static Utils;
+
+class Day1
 {   
     public static void Run()
     {
-        Console.WriteLine("Running Day 1 Solution...");
+        var a = GetPuzzleInput(1);
+        Print(a);
     }
 }

@@ -5,9 +5,10 @@
             "name": ".NET Run (dotnet run)",
             "type": "coreclr",
             "request": "launch",
-            "program": "dotnet",
+            "program": "cmd",
             "args": [
-                "run"
+                "/c", 
+                "dotnet run & echo. & pause"
             ],
             "cwd": "${workspaceFolder}",
             "console": "externalTerminal",

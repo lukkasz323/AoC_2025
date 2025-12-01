@@ -1,2 +1,3 @@
 ﻿Day1.Run();
-Console.ReadKey();
+
+// Console.ReadKey(true);
