@@ -2,23 +2,19 @@ using System.Text;
 
 class Utils
 {
-    public static List<string> GetPuzzleInput(int dayNumber)
-    {
-        try
-        {
-            Environment.CurrentDirectory = AppContext.BaseDirectory;
-            using StreamReader text = File.OpenText(@$"{Environment.CurrentDirectory}\PuzzleInputs\{dayNumber}.txt");
-
-            return [.. text.ReadToEnd().Split("\r\n")];
-        }
-        catch (FileNotFoundException)
-        {
-            return [];
-        }
-    }
-
-    public static void Print<T>(IEnumerable<T> items)
+    public static void Print(IEnumerable<string> items)
     {
         Console.Write(string.Join(", ", items));
     }
+
+    public static void Print(string text)
+    {
+        Console.WriteLine(text);
+    }
+
+    public static int Modulo(int value, int modulus)
+    {
+        return ((value % modulus) + modulus) % modulus;
+    }
+
 }

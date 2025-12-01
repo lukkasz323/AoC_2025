@@ -5,15 +5,13 @@
             "name": ".NET Run (dotnet run)",
             "type": "coreclr",
             "request": "launch",
-            "program": "cmd",
-            "args": [
-                "/c", 
-                "dotnet run & echo. & pause"
-            ],
+            "program": "${workspaceFolder}/bin/Debug/net10.0/AoC_2025.dll",
+            "args": [],
             "cwd": "${workspaceFolder}",
-            "console": "externalTerminal",
+            "console": "integratedTerminal",
             "stopAtEntry": false,
-            "internalConsoleOptions": "neverOpen"
+            "internalConsoleOptions": "neverOpen",
+            "preLaunchTask": "build"
         }
     ]
 }
