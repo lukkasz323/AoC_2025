@@ -4,22 +4,26 @@ abstract class Day
 {
     protected (string, string) Solution = ("", "");
 
-    public List<string> PuzzleInput { get; }
-    public Day()
-    {
-        PuzzleInput = GetPuzzleInput(1);
-    }
+    protected bool AltInputStyle { get; init; } = true;
+    protected abstract List<string> PuzzleInput { get; }
 
-    abstract protected void Solve();
+    protected abstract void Solve();
 
-    public static List<string> GetPuzzleInput(int dayNumber)
+    public static List<string> GetPuzzleInput(int dayNumber, bool altInputStyle = false)
         {
             try
             {
                 Environment.CurrentDirectory = AppContext.BaseDirectory;
                 using StreamReader text = File.OpenText(@$"{Environment.CurrentDirectory}\PuzzleInputs\{dayNumber}.txt");
 
-                return [.. text.ReadToEnd().Split("\r\n")];
+                if (altInputStyle)
+                {
+                    return [.. text.ReadToEnd().Split(",")];
+                }
+                else
+                {
+                    return [.. text.ReadToEnd().Split("\r\n")];
+                }
             }
             catch (FileNotFoundException)
             {

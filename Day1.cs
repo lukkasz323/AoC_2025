@@ -2,6 +2,7 @@
 
 class Day1 : Day
 {   
+    protected override List<string> PuzzleInput { get; } = GetPuzzleInput(1);
     protected override void Solve()
     {
         Solution = (Solve_Part1(), Solve_Part2());
