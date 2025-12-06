@@ -1,3 +1,3 @@
-﻿new Day2().Run();
+﻿new Day3().Run();
 
 // Console.ReadKey(true);
