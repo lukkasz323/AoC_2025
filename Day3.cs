@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System.Text;
 using static Utils;
 
 class Day3 : Day
@@ -8,18 +7,28 @@ class Day3 : Day
 
     protected override void Solve()
     {
+        const int BatterySize = 12;
+
         long totalJoltage = 0;
 
         foreach (string bank in PuzzleInput)
         {
             SortedDictionary<int, int> battery = new();
 
-            for (int iBattery = 0; iBattery < 12; iBattery++)
+            int start = 0;
+            for (int iBattery = 0; iBattery < BatterySize; iBattery++)
             {
-                // Find highest digit in a onoccupied position and assign it
+                // Find next highest digit and assign it (1. enough space to the right, 2. closest to the left)
                 (int Index, int Value) highestDigit = default;
-                for (int i = 0; i < bank.Length; i++)
+
+                int end = bank.Length - BatterySize - 1;
+                //1st loop: end - 12, ~87
+                for (int i = start; i < end; i++)
                 {
+                    if (start > 90)
+                    {
+                        throw new Exception("Too high");
+                    }
                     // --- Skip occupied positions
                     if (battery.ContainsKey(i)) { 
                         continue;
@@ -35,6 +44,7 @@ class Day3 : Day
                 }
                 // --- Assign
                 battery[highestDigit.Index] = highestDigit.Value;
+                start = highestDigit.Index + 1;
             }
 
             StringBuilder batteryStringBuilder = new();
